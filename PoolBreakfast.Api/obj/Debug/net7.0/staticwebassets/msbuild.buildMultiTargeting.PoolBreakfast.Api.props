@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/PoolBreakfast.Api.props" />
+</Project>

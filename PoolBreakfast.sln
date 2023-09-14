@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoolBreakfast.Api", "PoolBreakfast.Api\PoolBreakfast.Api.csproj", "{2308B980-398A-4FF6-9A22-078A422FA47F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoolBreakfast.Contracts", "PoolBreakfast.Contracts\PoolBreakfast.Contracts.csproj", "{C0507B1A-E449-4B82-A658-A110954899CF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2308B980-398A-4FF6-9A22-078A422FA47F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2308B980-398A-4FF6-9A22-078A422FA47F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2308B980-398A-4FF6-9A22-078A422FA47F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2308B980-398A-4FF6-9A22-078A422FA47F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0507B1A-E449-4B82-A658-A110954899CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0507B1A-E449-4B82-A658-A110954899CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0507B1A-E449-4B82-A658-A110954899CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0507B1A-E449-4B82-A658-A110954899CF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

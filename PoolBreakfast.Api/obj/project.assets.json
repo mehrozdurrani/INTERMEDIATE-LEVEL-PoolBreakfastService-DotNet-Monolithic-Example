@@ -1,0 +1,93 @@
+{
+  "version": 3,
+  "targets": {
+    "net7.0": {
+      "PoolBreakfast.Contracts/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/PoolBreakfast.Contracts.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PoolBreakfast.Contracts.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "PoolBreakfast.Contracts/1.0.0": {
+      "type": "project",
+      "path": "../PoolBreakfast.Contracts/PoolBreakfast.Contracts.csproj",
+      "msbuildProject": "../PoolBreakfast.Contracts/PoolBreakfast.Contracts.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net7.0": [
+      "PoolBreakfast.Contracts >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "/Users/mehrozdurrani/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/Users/mehrozdurrani/Desktop/Learning/DotNet Sample Projects/PoolBreakfast/PoolBreakfast/PoolBreakfast.Api/PoolBreakfast.Api.csproj",
+      "projectName": "PoolBreakfast.Api",
+      "projectPath": "/Users/mehrozdurrani/Desktop/Learning/DotNet Sample Projects/PoolBreakfast/PoolBreakfast/PoolBreakfast.Api/PoolBreakfast.Api.csproj",
+      "packagesPath": "/Users/mehrozdurrani/.nuget/packages/",
+      "outputPath": "/Users/mehrozdurrani/Desktop/Learning/DotNet Sample Projects/PoolBreakfast/PoolBreakfast/PoolBreakfast.Api/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/Users/mehrozdurrani/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net7.0"
+      ],
+      "sources": {
+        "/usr/local/share/dotnet/sdk/7.0.307/Sdks/Microsoft.NET.Sdk.Web/library-packs": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "projectReferences": {
+            "/Users/mehrozdurrani/Desktop/Learning/DotNet Sample Projects/PoolBreakfast/PoolBreakfast/PoolBreakfast.Contracts/PoolBreakfast.Contracts.csproj": {
+              "projectPath": "/Users/mehrozdurrani/Desktop/Learning/DotNet Sample Projects/PoolBreakfast/PoolBreakfast/PoolBreakfast.Contracts/PoolBreakfast.Contracts.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net7.0": {
+        "targetAlias": "net7.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.307/RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
