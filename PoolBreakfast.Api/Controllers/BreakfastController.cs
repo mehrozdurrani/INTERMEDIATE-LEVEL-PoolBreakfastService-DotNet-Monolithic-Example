@@ -13,7 +13,7 @@ namespace PoolBreakfast.Api.Controllers
     /// controller class that is 'BreakFast' from 'BreakfastController'. 
     /// </summary>
     ///
-    [Route("controller")]
+    [Route("[controller]")]
     public class BreakfastController : ApiController
     {
         private readonly IBreakfastService _breakfastService;
@@ -85,13 +85,16 @@ namespace PoolBreakfast.Api.Controllers
                 request.Savory,
                 request.Sweet);
             _breakfastService.UpdateBreakfast(id, breakfast);
-            return CreatedAtAction(nameof(GetBreakfast), new { id = breakfast.Id }, Ok());
+
+            // TODO: Create new breakfast if Id does not exist
+            return NoContent();
         }
 
         [HttpDelete("{id}")]
         public IActionResult DeleteBreakfast(Guid id)
         {
-            return Ok();
+            _breakfastService.DeleteBreakfast(id);
+            return NoContent();
         }
     }
 }

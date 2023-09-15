@@ -4,7 +4,7 @@ namespace PoolBreakfast.Api.Services.Breakfasts
 {
     public class BreakfastService : IBreakfastService
     {
-        private readonly Dictionary<Guid, Breakfast> _breakfasts = new();
+        private static readonly Dictionary<Guid, Breakfast> _breakfasts = new();
         public void CreateBreakfast(Breakfast breakfast)
         {
             _breakfasts.Add(breakfast.Id, breakfast);
@@ -17,7 +17,10 @@ namespace PoolBreakfast.Api.Services.Breakfasts
 
         public Breakfast GetBreakfast(Guid id)
         {
-            return _breakfasts[id];
+            var breakfast = _breakfasts.Select(
+                breakfast => breakfast.Value).
+                FirstOrDefault(breakfast => breakfast.Id == id);
+            return breakfast!;
         }
 
         public void UpdateBreakfast(Guid id, Breakfast breakfast)
