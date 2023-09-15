@@ -9,7 +9,7 @@ namespace PoolBreakfast.Api.Services.Breakfasts
     {
         public static IServiceCollection AddBreakfastService(this IServiceCollection services)
         {
-            services.AddSingleton<IBreakfastService, BreakfastService>();
+            services.AddScoped<IBreakfastService, BreakfastService>();
             return services;
         }
     }
