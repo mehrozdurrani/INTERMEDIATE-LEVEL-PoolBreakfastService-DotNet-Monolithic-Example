@@ -50,19 +50,42 @@ namespace PoolBreakfast.Api.Controllers
                 breakfast.Savory,
                 breakfast.Sweet
             );
-            return Ok(response);
+            return CreatedAtAction(
+                nameof(GetBreakfast),
+                new { id = breakfast.Id },
+                response);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetBreakfast(Guid id)
         {
-            return Ok();
+            var result = _breakfastService.GetBreakfast(id);
+            GetBreakfastResponse response = new(
+                result.Id,
+                result.Name,
+                result.Description,
+                result.StartDateTime,
+                result.EndDateTime,
+                result.LastModifiedDateTime,
+                result.Savory,
+                result.Sweet);
+            return Ok(response);
         }
 
         [HttpPut("{id}")]
         public IActionResult UpsertBreakfast(Guid id, UpsertBreakfastRequest request)
         {
-            return Ok();
+            var breakfast = new Breakfast(
+                id,
+                request.Name,
+                request.Description,
+                request.StartDateTime,
+                request.EndDateTime,
+                DateTime.UtcNow,
+                request.Savory,
+                request.Sweet);
+            _breakfastService.UpdateBreakfast(id, breakfast);
+            return CreatedAtAction(nameof(GetBreakfast), new { id = breakfast.Id }, Ok());
         }
 
         [HttpDelete("{id}")]

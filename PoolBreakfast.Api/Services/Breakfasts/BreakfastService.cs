@@ -15,13 +15,12 @@ namespace PoolBreakfast.Api.Services.Breakfasts
             _breakfasts.Remove(id);
         }
 
-        public void GetBreakfast(Guid id)
+        public Breakfast GetBreakfast(Guid id)
         {
-            _breakfasts.Select(breakfast => breakfast.Key == id)
-                .FirstOrDefault();
+            return _breakfasts[id];
         }
 
-        public void UpdateBreakfast(Breakfast breakfast)
+        public void UpdateBreakfast(Guid id, Breakfast breakfast)
         {
             _breakfasts[breakfast.Id] = breakfast;
         }
