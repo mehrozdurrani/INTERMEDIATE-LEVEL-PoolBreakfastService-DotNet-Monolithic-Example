@@ -17,7 +17,6 @@ namespace PoolBreakfast.Api.Controllers
                 ErrorType.Conflict => StatusCodes.Status409Conflict,
                 _ => StatusCodes.Status500InternalServerError
             };
-
             return Problem(statusCode: statusCode, title: firstError.Description);
         }
     }
