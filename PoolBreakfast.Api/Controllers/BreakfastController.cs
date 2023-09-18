@@ -27,14 +27,7 @@ namespace PoolBreakfast.Api.Controllers
         [HttpPost]
         public IActionResult CreateBreakfast(CreateBreakfastRequest request)
         {
-            var requestToCreateBreakfastResult = Breakfast.Create(
-                request.Name,
-                request.Description,
-                request.StartDateTime,
-                request.EndDateTime,
-                request.Savory,
-                request.Sweet
-            );
+            var requestToCreateBreakfastResult = Breakfast.From(request);
             if (requestToCreateBreakfastResult.IsError)
             {
                 return CustomProblem(requestToCreateBreakfastResult.Errors);
@@ -62,16 +55,7 @@ namespace PoolBreakfast.Api.Controllers
         [HttpPut("{id}")]
         public IActionResult UpsertBreakfast(Guid id, UpsertBreakfastRequest request)
         {
-            var requestToCreateBreakfastResult = Breakfast.Create(
-                request.Name,
-                request.Description,
-                request.StartDateTime,
-                request.EndDateTime,
-                request.Savory,
-                request.Sweet,
-                id
-            );
-
+            var requestToCreateBreakfastResult = Breakfast.From(id, request);
             if (requestToCreateBreakfastResult.IsError)
             {
                 return CustomProblem(requestToCreateBreakfastResult.Errors);

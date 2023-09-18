@@ -20,6 +20,11 @@ namespace PoolBreakfast.Api.Controllers
                 return ValidationProblem(modelStateDictionary);
             }
 
+            if (errors.Any(e => e.Type == ErrorType.Unexpected))
+            {
+                return Problem();
+            }
+
             var firstError = errors[0];
             var statusCode = firstError.Type switch
             {
