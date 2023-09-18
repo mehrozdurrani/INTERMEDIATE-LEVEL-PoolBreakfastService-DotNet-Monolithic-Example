@@ -1,6 +1,7 @@
 # PoolBreakfast Service Example
 
 Welcome to the PoolBreakfast service example project! This project is designed for educational purposes to demonstrate how to implement a basic CRUD (Create, Read, Update, Delete) service for managing breakfast data. It also showcases the usage of "ErrorOr" library for global exception and error handling, along with invariants.
+"Example has been taken from Amichai Mantinband tutorial"
 
 ## Project Overview
 
