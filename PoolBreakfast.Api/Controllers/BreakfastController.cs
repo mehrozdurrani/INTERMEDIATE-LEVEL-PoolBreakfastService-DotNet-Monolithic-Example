@@ -39,12 +39,7 @@ namespace PoolBreakfast.Api.Controllers
             );
             ErrorOr<Created> createdBreakfast = _breakfastService.CreateBreakfast(breakfast);
             return createdBreakfast.Match(
-                result =>
-                    CreatedAtAction(
-                        nameof(GetBreakfast),
-                        new { id = breakfast.Id },
-                        MapBreakfastResponse(breakfast)
-                    ),
+                result => CreatedAtGetBreakfast(breakfast.Id, breakfast),
                 CustomProblem
             );
         }
@@ -78,14 +73,11 @@ namespace PoolBreakfast.Api.Controllers
                 id,
                 breakfast
             );
-            if (updatedBreakfast.Value.IsNewlyCreated)
-                return CreatedAtAction(
-                    nameof(GetBreakfast),
-                    new { id },
-                    MapBreakfastResponse(breakfast)
-                );
-
-            return NoContent();
+            return updatedBreakfast.Match(
+                upsert =>
+                    upsert.IsNewlyCreated ? CreatedAtGetBreakfast(id, breakfast) : base.NoContent(),
+                CustomProblem
+            );
         }
 
         [HttpDelete("{id}")]
@@ -106,6 +98,15 @@ namespace PoolBreakfast.Api.Controllers
                 breakfast.LastModifiedDateTime,
                 breakfast.Savory,
                 breakfast.Sweet
+            );
+        }
+
+        private CreatedAtActionResult CreatedAtGetBreakfast(Guid id, Breakfast breakfast)
+        {
+            return CreatedAtAction(
+                nameof(GetBreakfast),
+                new { id },
+                MapBreakfastResponse(breakfast)
             );
         }
     }
