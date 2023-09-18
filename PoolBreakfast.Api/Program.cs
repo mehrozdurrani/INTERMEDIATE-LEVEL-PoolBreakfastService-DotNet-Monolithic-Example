@@ -1,6 +1,6 @@
-// Handling dependency injection
 using PoolBreakfast.Api.Services.Breakfasts;
 
+// Handling services/ dependency injection
 var builder = WebApplication.CreateBuilder(args);
 {
     builder.Services.AddControllers();
@@ -10,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Handling request pipeline
 var app = builder.Build();
 {
+    app.UseExceptionHandler("/error");
     app.UseHttpsRedirection();
     app.MapControllers();
     app.Run();

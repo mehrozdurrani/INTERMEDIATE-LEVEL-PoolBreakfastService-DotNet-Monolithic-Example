@@ -1,4 +1,6 @@
+using ErrorOr;
 using PoolBreakfast.Api.Models;
+using PoolBreakfast.Api.Services.ErrorsService;
 
 namespace PoolBreakfast.Api.Services.Breakfasts
 {
@@ -15,12 +17,12 @@ namespace PoolBreakfast.Api.Services.Breakfasts
             _breakfasts.Remove(id);
         }
 
-        public Breakfast GetBreakfast(Guid id)
+        public ErrorOr<Breakfast> GetBreakfast(Guid id)
         {
-            var breakfast = _breakfasts.Select(
-                breakfast => breakfast.Value).
-                FirstOrDefault(breakfast => breakfast.Id == id);
-            return breakfast!;
+            var ifBreakfastExists = _breakfasts.TryGetValue(id, out Breakfast? breakfast);
+            if (ifBreakfastExists is not false)
+                return _breakfasts[id];
+            return Errors.BreakFast.NotFound();
         }
 
         public void UpdateBreakfast(Guid id, Breakfast breakfast)

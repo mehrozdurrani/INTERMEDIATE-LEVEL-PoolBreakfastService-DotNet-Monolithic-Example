@@ -1,3 +1,4 @@
+using ErrorOr;
 using Microsoft.AspNetCore.Mvc;
 using PoolBreakfast.Api.Models;
 using PoolBreakfast.Api.Services.Breakfasts;
@@ -59,17 +60,25 @@ namespace PoolBreakfast.Api.Controllers
         [HttpGet("{id}")]
         public IActionResult GetBreakfast(Guid id)
         {
-            var result = _breakfastService.GetBreakfast(id);
-            GetBreakfastResponse response = new(
-                result.Id,
-                result.Name,
-                result.Description,
-                result.StartDateTime,
-                result.EndDateTime,
-                result.LastModifiedDateTime,
-                result.Savory,
-                result.Sweet);
-            return Ok(response);
+            ErrorOr<Breakfast> getBreakfastResult = _breakfastService.GetBreakfast(id);
+
+            return getBreakfastResult.Match(
+                   breakfast => Ok(MapBreakfastResponse(breakfast)),
+                   CustomProblem
+               );
+        }
+
+        private static GetBreakfastResponse MapBreakfastResponse(Breakfast breakfast)
+        {
+            return new(
+                            breakfast.Id,
+                            breakfast.Name,
+                            breakfast.Description,
+                            breakfast.StartDateTime,
+                            breakfast.EndDateTime,
+                            breakfast.LastModifiedDateTime,
+                            breakfast.Savory,
+                            breakfast.Sweet);
         }
 
         [HttpPut("{id}")]
