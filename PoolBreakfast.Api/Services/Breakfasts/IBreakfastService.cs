@@ -1,12 +1,13 @@
+using ErrorOr;
 using PoolBreakfast.Api.Models;
 
 namespace PoolBreakfast.Api.Services.Breakfasts
 {
     public interface IBreakfastService
     {
-        void CreateBreakfast(Breakfast breakfast);
-        Breakfast GetBreakfast(Guid id);
-        void UpdateBreakfast(Guid id, Breakfast breakfast);
-        void DeleteBreakfast(Guid id);
+        ErrorOr<Created> CreateBreakfast(Breakfast breakfast);
+        ErrorOr<Breakfast> GetBreakfast(Guid id);
+        ErrorOr<UpsertBreakfast> UpdateBreakfast(Guid id, Breakfast breakfast);
+        ErrorOr<Deleted> DeleteBreakfast(Guid id);
     }
 }

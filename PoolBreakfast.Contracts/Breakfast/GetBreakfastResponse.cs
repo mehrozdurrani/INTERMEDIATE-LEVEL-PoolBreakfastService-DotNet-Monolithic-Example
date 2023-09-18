@@ -1,6 +1,6 @@
 namespace PoolBreakfast.Contracts.Breakfast
 {
-    public record GetBreakfastResponse(
+    public record BreakfastResponse(
         Guid Id,
         string Name,
         string Description,
