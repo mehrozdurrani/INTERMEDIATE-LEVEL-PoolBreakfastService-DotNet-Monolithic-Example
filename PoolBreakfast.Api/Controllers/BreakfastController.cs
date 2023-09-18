@@ -27,17 +27,14 @@ namespace PoolBreakfast.Api.Controllers
         [HttpPost]
         public IActionResult CreateBreakfast(CreateBreakfastRequest request)
         {
-            var breakfast = new Breakfast(
-                Guid.NewGuid(),
-                request.Name,
-                request.Description,
-                request.StartDateTime,
-                request.EndDateTime,
-                DateTime.UtcNow,
-                request.Savory,
-                request.Sweet
-            );
+            var requestToCreateBreakfastResult = Breakfast.From(request);
+            if (requestToCreateBreakfastResult.IsError)
+            {
+                return CustomProblem(requestToCreateBreakfastResult.Errors);
+            }
+            var breakfast = requestToCreateBreakfastResult.Value;
             ErrorOr<Created> createdBreakfast = _breakfastService.CreateBreakfast(breakfast);
+
             return createdBreakfast.Match(
                 result => CreatedAtGetBreakfast(breakfast.Id, breakfast),
                 CustomProblem
@@ -58,21 +55,18 @@ namespace PoolBreakfast.Api.Controllers
         [HttpPut("{id}")]
         public IActionResult UpsertBreakfast(Guid id, UpsertBreakfastRequest request)
         {
-            var breakfast = new Breakfast(
-                id,
-                request.Name,
-                request.Description,
-                request.StartDateTime,
-                request.EndDateTime,
-                DateTime.UtcNow,
-                request.Savory,
-                request.Sweet
-            );
+            var requestToCreateBreakfastResult = Breakfast.From(id, request);
+            if (requestToCreateBreakfastResult.IsError)
+            {
+                return CustomProblem(requestToCreateBreakfastResult.Errors);
+            }
 
+            var breakfast = requestToCreateBreakfastResult.Value;
             ErrorOr<UpsertBreakfast> updatedBreakfast = _breakfastService.UpdateBreakfast(
                 id,
                 breakfast
             );
+
             return updatedBreakfast.Match(
                 upsert =>
                     upsert.IsNewlyCreated ? CreatedAtGetBreakfast(id, breakfast) : base.NoContent(),
