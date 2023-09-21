@@ -10,6 +10,14 @@ This repository serves as a valuable resource for anyone interested in learning 
 - Building a simple CRUD application.
 - Global exception and error handling with "ErrorOr."
 - Applying invariants to ensure data integrity.
+- Testing Breakfast Service
+
+## Technologies Used
+
+- .NET 7
+- xUnit
+- Shouldly
+- ErrorOr
 
 ## JSON Request and Responses
 
