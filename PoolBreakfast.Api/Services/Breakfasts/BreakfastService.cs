@@ -39,10 +39,10 @@ namespace PoolBreakfast.Api.Services.Breakfasts
             if (ifBreakfastExists is false)
             {
                 _breakfasts.Add(id, breakfast);
-                return new UpsertBreakfast(true);
+                return new UpsertBreakfast(false);
             }
             _breakfasts[breakfast.Id] = breakfast;
-            return new UpsertBreakfast(false);
+            return new UpsertBreakfast(true);
         }
     }
 }
