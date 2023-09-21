@@ -57,7 +57,10 @@ namespace PoolBreakfast.Api.Models
                 errors.Add(Errors.BreakFast.InvalidName());
             }
 
-            if (description.Length < MinDescriptionLength || description.Length > MaxDescriptionLength)
+            if (
+                description.Length < MinDescriptionLength
+                || description.Length > MaxDescriptionLength
+            )
             {
                 errors.Add(Errors.BreakFast.InvalidDescription());
             }
@@ -78,6 +81,7 @@ namespace PoolBreakfast.Api.Models
                 sweet
             );
         }
+
         public static ErrorOr<Breakfast> From(CreateBreakfastRequest request)
         {
             return Create(
@@ -89,6 +93,7 @@ namespace PoolBreakfast.Api.Models
                 request.Sweet
             );
         }
+
         public static ErrorOr<Breakfast> From(Guid id, UpsertBreakfastRequest request)
         {
             return Create(
